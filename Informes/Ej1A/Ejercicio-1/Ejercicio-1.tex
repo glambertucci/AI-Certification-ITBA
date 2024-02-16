@@ -1,0 +1,66 @@
+%\input{../Informe/Header.tex}
+
+%\begin{document}
+%
+\subsection{Consigna}
+\begin{itemize}
+\item Primera Parte Ejercicio 1 – Regresión \
+Los casos de Regresión se caracterizan por tener una variable cuantitativa para predecir.
+\begin{itemize}
+\item Seleccione un dataset con un caso de Regresión. El dataset debe ser obtenido de alguna librería de R o de una página web pública (no incluir datos confidenciales).
+\item Por ejemplo, se podría utilizar:\\
+$\Longrightarrow$ Datasets de R como: mtcars de base, iris de base, cheddar de faraway, etc.\\
+$\Longrightarrow$ datasets de UCI (Universidad de California) \url{https://archive.ics.uci.edu}\\
+$\Longrightarrow$ datasets de Kaggle \url{https://www.kaggle.com/}\\
+$\Longrightarrow$ datasets de ISLR \url{https://www.statlearning.com/resources-second-edition}\\
+\item El dataset debe contener al menos 3 variables y una de ellas debe ser numérica. (Nota: este dataset es solamente para este ejercicio y no se espera ser utilizado en otros ejercicios).
+\begin{enumerate}
+\item Indique el nombre del dataset, y la librería de R o la página web fuente del mismo.
+\item ¿De qué trata la base?
+\item ¿Cuántos registros tiene la base? ¿Cuántas variables? ¿De qué tipo son las variables? Podría utilizar \texttt{dim(base)}, \texttt{str(base)}, \texttt{summary(base)}
+\item Realice un histograma de la variable numérica seleccionada. ¿En qué rango se encuentran los valores? \texttt{hist(variable, main="Título", col="color")}
+\begin{enumerate}
+\item Para el título ingrese su nombre, como “Histograma de Marcela”.
+\item Elija un color para el gráfico. Tenga en cuenta que ingresando \texttt{colors()} en R verá que hay más de 500 colores posibles.
+\item Indique el código R utilizado.
+\end{enumerate}
+\end{enumerate}
+\end{itemize}
+\end{itemize}
+\newpage
+\subsection{Resoluci\'on}
+La base de datos elegida es \href{https://www.kaggle.com/datasets/yuxinc/summer-olympics-weightlifting-records-2000-to-2020}{Summer Olympics Weightlifting records 2000 to 2020} de la página web Kaggle.
+Esta base registra los pesos máximos levantados por cada atleta olímpico en las dos movimientos correspondientes al levantamiento de pesas (Clean $\&$ Jerk y Snatch), ademas se provee el genero del atleta, su peso corporal, entre otras cosas. Cuenta con 716 registros, con 11 variables (\ref{tab:columnas}).\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Nombre de la variable} & \textbf{Tipo} & \textbf{Comentario}                             \\ \hline
+x                              & Integer       & Indice                                          \\ \hline
+Athlete                        & String        & Nombre del Atleta                               \\ \hline
+Bodyweight..kg                 & Double        & Peso corporal en kilogramos                     \\ \hline
+Clean...Jerk..kg               & Double        & Peso del Clean $\&$ Jerk                        \\ \hline
+Snatch..kg                     & Double        & Peso del Snatch                                 \\ \hline
+Total..kg                      & Double        & Peso total                                      \\ \hline
+Ranking                        & Integer       & Clasificaci\textbackslash{}'on final del atleta \\ \hline
+Url                            & String        & Link a wikipedia                                \\ \hline
+Title                          & String        & Titulo obtenido                                 \\ \hline
+Year                           & Integer       & Año de competición                              \\ \hline
+Gender                         & String        & Género                                          \\ \hline
+\end{tabular}
+\caption{Tabla de variables.}
+\label{tab:columnas}
+\end{table}
+De estas variables, dependiendo que es lo que se quiere predecir, hay varias que no aportan información alguna. Por ejemplo si uno quisiera predecir el valor que levanto de Snatch la variable x no aporta informacion, al igual que la Url. En contraposición el Clean $\&$ Jerk y el peso corporal son variables significativas.
+Se optó por la variable "Snatch" para graficar (\ref{fig:histSnatch}).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Ejercicio-1/ImagenesEjercicio1/histSnatch.pdf}
+	\caption{Histograma de la variable "Snatch..Kg".}	
+	\label{fig:histSnatch}
+\end{figure}
+Es interesante observar el histograma, ya que revela dos aspectos distintos. Por un lado, se puede apreciar una distribución centrada alrededor de los 125 Kg, la cual muestra una forma de campana similar a una distribución normal. Por otro lado, se destacan una serie de valores en 0 Kg. Estos valores atípicos, conocidos como "outliers", no son representativos del rendimiento del atleta ni contribuyen a su predicción. Más bien, reflejan casos de atletas que no compitieron en esa categoría y se les asignó un valor de 0.
+\subsection{Código utilizado}
+
+\lstinputlisting[language=R]{../../../Code/Ej1a/Lambertucci_1.R}
+%\end{document}
