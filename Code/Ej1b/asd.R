@@ -1,0 +1,13 @@
+#Partition
+set.seed(40397224)
+partition=createDataPartition(y=Glass$TipoDeVidrio,p=0.75,list=FALSE)
+entreno=Glass[partition,]
+testeo=Glass[-partition,]
+summary(entreno)
+head(entreno)
+summary(testeo)
+head(testeo)
+dim(Glass);dim(entreno);dim(testeo)
+table(Glass$TipoDeVidrio);
+table(entreno$TipoDeVidrio);
+table(testeo$TipoDeVidrio)

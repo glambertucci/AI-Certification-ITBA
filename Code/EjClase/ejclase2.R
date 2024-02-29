@@ -1,12 +1,16 @@
 library(caret)
 library(MASS)
+library(rpart)
+library(rpart.plot)
 base=data(crabs)
 #borro lo inutil
 crabs$index=NULL
 crabs$sex=NULL
 # set seed
+#eda  
+
 set.seed(15)
-partition=createDataPartition(y=crabs$sp,p=0.6,list=FALSE)
+partition=createDataPartition(y=crabs$sp,p=0.8,list=FALSE)
 entreno=crabs[partition,]
 testeo=crabs[-partition,]
 summary(crabs$sp)
